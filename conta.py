@@ -1,3 +1,4 @@
+import random
 class Conta:
 
     def __init__(self, nome, sobrenome, saldo, senha, numero_conta):
@@ -12,7 +13,8 @@ class Conta:
         sobrenome = str(input("sobrenome: "))
         saldo = float(input("seu saldo: "))
         senha = int(input("sua senha: "))
-        numero_conta = int(input("numero da conta: "))
+        numero_conta = random.randint(100000,999999)
+        print("Conta de {} {} possui saldo R$ {} seu numero da conta {}".format(nome, sobrenome, saldo, numero_conta))
 
     def validar_senha(self):
         pass
