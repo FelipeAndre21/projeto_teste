@@ -25,9 +25,8 @@ class Conta:
     def deletar_conta(self):
         pass
 
-    def mudar_saldo(self, valor):
-        self.saldo = valor
+    def mudar_saldo(saldo, valor):
+        saldo = valor
 
     def sair(self):
         pass
-
