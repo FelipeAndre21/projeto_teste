@@ -1,32 +1,81 @@
 import random
+from lib.auth import Authenticator
+class Decorator(object):
+    def __init__(self,decoratee_enclosing_class):
+        self.decoratee_enclosing_class = decoratee_enclosing_class
+
+    def __call__(self,original_func):
+        def get_password_save(*args, **kwargs):
+            password = input("Digite a sua senha: ")
+            if str(args[0].get_password()) == password:
+                return original_func(*args, **kwargs)
+            return acesso_negado()
+
+        return get_password_save
+def acesso_negado():
+    print("Senha incorreto")
+# def check_password(func):
+#     def get_password_save(*args, **kwargs):
+#         print()
+#         # senha = self.get_attr("senha")
+#         pass
+#
+#     a = get_password_save()
+#     return func
+#     # password = input("Digite sua senha: ")
+    # senha = self.get_attr("senha")
+    # if str(password) == str(senha):
+    #     return func
+    # return self.acesso_negado
 class Conta:
+    def __init__(self, number_account=None):
+        self._data = self.get_attr(number_account)
+        self._number_account = number_account
 
-    def __init__(self, nome, sobrenome, saldo, senha, numero_conta):
-        self.nome = nome
-        self.sobrenome = sobrenome
-        self.saldo = saldo
-        self.senha = senha
-        self.numero_conta = numero_conta
+    def get_password(self):
+        return self._data['senha']
 
-    def criar_conta():
-        nome = str(input("nome: "))
-        sobrenome = str(input("sobrenome: "))
-        saldo = float(input("seu saldo: "))
-        senha = int(input("sua senha: "))
-        numero_conta = random.randint(100000,999999)
-        print("Conta de {} {} possui saldo R$ {} seu numero da conta {}".format(nome, sobrenome, saldo, numero_conta))
+    def is_valid(self):
+        if self._data:
+            return True
+        return False
+    # def criar_conta(self, params):
+    #
+    #
+    #     params['numero_conta'] = random.randint(000000, 999999)
+    #
+    #     file = open(f"contas/{params['numero_conta']}.txt", "w")
+    #     for key, value in params.items():
+    #         file.write(
+    #             "{0}:{1} \n".format(str(key), str(value))
+    #         )
+    @Authenticator("Conta")
+    def consultar_saldo(self):
+        return {
+               "status_code": 200,
+               "message": f"Seu saldo atual é : {self._data.get('saldo')}," \
+                          f" sujeito a alteração até o fim do dia",
+               "saldo": self._data.get("saldo")
 
-    def validar_senha(self):
-        pass
+       }
 
-    def editar_conta(self):
-        pass
+    def get_attr(self, number_account):
+        data = {}
+        file = None
+        try:
+            file = open(f"contas/{number_account}.txt", "r")
+        except Exception as err:
+            return False
 
-    def deletar_conta(self):
-        pass
 
-    def mudar_saldo(saldo, valor):
-        saldo = valor
+        for i in file:
+            data[i.split(":")[0]] = i.split(":")[1].replace("\n", "").replace(" ","")
+
+        return data
 
     def sair(self):
         pass
+
+    def __str__(self):
+        return self._data['nome']
+
