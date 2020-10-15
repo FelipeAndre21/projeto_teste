@@ -36,8 +36,16 @@ class Conta:
     def editar_conta(self):
         pass
 
-    def deletar_conta(self):
-        pass
+    def deletar_conta():
+
+        arquivo = open('gerentebd.txt', 'r+')
+        conta = int(input("digite numero da conta que deseja excluir:"))
+
+        for linha in arquivo:
+            linha = linha.rstrip()
+            print(linha)
+        arquivo.close()
+
 
     def mudar_saldo(saldo, valor):
         saldo = valor
