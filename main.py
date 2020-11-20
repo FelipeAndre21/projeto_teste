@@ -1,22 +1,21 @@
 from conta import Conta
-print("******* MENU *******")
-print("(1) criar conta - (2) editar conta - (3) deletar conta - (4) mudar saldo - (5) sair")
-opcao = 1
-while opcao == 1 or 2 or 3 or 4 or 5:
-    opcao = int(input("Escolha uma opção: "))
-    if opcao == 1:
-        print("criar conta")
-        Conta.criar_conta()
-    elif opcao == 2:
-        print("editar conta")
-    elif opcao == 3:
-        print("deletar conta")
-    elif opcao == 4:
-        print("mudar saldo para")
-        saldo = float(input("Novo saldo: "))
+from menu import Menu
 
-    elif opcao == 5:
-        print("sair")
+print("Escolha a opção desejada: ")
+opcao = int(input(
+    "1 - cliente"
+    "\n2 - gerente"
+    "\n3 - sair: "
+     "\nInforme a sua opção: "
+                 ))
+while True:
+
+    if opcao == 1:
+        pass
+    elif opcao == 2:
+        Menu.menu()
+    elif opcao == 3:
         break
-else:
-    print("voce digitou opção inexistente")
+    else:
+        print("opção invalida")
+        break

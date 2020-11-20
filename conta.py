@@ -30,10 +30,10 @@ class Conta:
                 print(linha)
             arquivo.close()
             break;
-    def validar_senha(self):
+    def validar_senha():
         pass
 
-    def editar_conta(self):
+    def editar_conta():
         pass
 
     def deletar_conta():
@@ -52,3 +52,6 @@ class Conta:
 
     def sair(self):
         pass
+
+
+
