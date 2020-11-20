@@ -47,8 +47,7 @@ class Conta:
         arquivo.close()
 
 
-    def mudar_saldo(saldo, valor):
-        saldo = valor
+
 
     def sair(self):
         pass
