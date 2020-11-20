@@ -1,5 +1,6 @@
 from conta import Conta
 from menu import Menu
+from caixa_eletronico import Caixa_eletronico
 
 print("Escolha a opção desejada: ")
 opcao = int(input(
@@ -11,7 +12,7 @@ opcao = int(input(
 while True:
 
     if opcao == 1:
-        pass
+        Caixa_eletronico.criar_caixa_eletronico()
     elif opcao == 2:
         Menu.menu()
     elif opcao == 3:
