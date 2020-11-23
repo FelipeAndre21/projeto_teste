@@ -11,7 +11,7 @@ class Caixa_eletronico:
          "\nInforme a sua opção: "
                      ))
         if opcao == 1:
-
+            print("depositar")
             def depositar(self, valor):
                 self.saldo += valor
         elif opcao == 2:
