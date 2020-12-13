@@ -9,6 +9,7 @@ class Conta:
         self.numero_conta = numero_conta
 
     def criar_conta():
+        lista = []
         while True:
             nome = str(input("nome: ")).capitalize()
             sobrenome = str(input("sobrenome: ")).capitalize()
@@ -29,7 +30,10 @@ class Conta:
                 linha = linha.rstrip()
                 print(linha)
             arquivo.close()
+            lista.append(linha)
+            print("agora", lista)
             break;
+
     def validar_senha():
         pass
 
@@ -45,6 +49,7 @@ class Conta:
             linha = linha.rstrip()
             print(linha)
         arquivo.close()
+
 
 
 
